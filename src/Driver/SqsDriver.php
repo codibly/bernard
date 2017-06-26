@@ -99,6 +99,8 @@ class SqsDriver extends AbstractPrefetchDriver
         $this->sqs->sendMessage([
             'QueueUrl' => $queueUrl,
             'MessageBody' => $message,
+            'MessageGroupId' => 'NoGroup',
+            'MessageDeduplicationId' => uniqid()
         ]);
     }
 
